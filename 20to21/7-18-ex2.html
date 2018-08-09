@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>ex2</title>
+  <style>
+  .hide {
+    display: none;
+  }
+  .show {
+    display: block;
+  }
+</style>
+</head>
+<body>
+  <label>
+    <input id="school" name="status" type="radio">
+    School
+</label>
+<label>
+    <input id="company" name="status" type="radio">
+    Company
+</label>
+
+<select id="school-select" class="hide">
+    <option>北京邮电大学</option>
+    <option>黑龙江大学</option>
+    <option>华中科技大学</option>
+</select>
+
+<select id="company-select" class="hide">
+    <option>百度</option>
+    <option>爱奇艺</option>
+</select>
+
+<script type="text/javascript">
+  var school = document.getElementById("school");
+  var company = document.getElementById("company");
+  var schoolSelect = document.getElementById("school-select");
+  var companySelect = document.getElementById("company-select");
+  document.body.addEventListener("click",process,false);
+  function process(event){
+    switch (event.target) {
+      case school:
+        reset();
+        schoolSelect.className = "show";
+        break;
+      case company:
+        reset();
+        companySelect.className = "show";
+        break;
+      default:
+        break;
+    }
+  }
+
+  function reset() {
+    var select = document.getElementsByTagName("select");
+    for(var i = 0;i<select.length;i++){
+      select[i].className = "hide";
+    }
+  }
+</script>
+</body>
+</html>

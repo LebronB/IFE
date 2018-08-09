@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>7-18-ex4</title>
+</head>
+<body>
+  <div id="fade-obj" style="width:300px;height:300px;background:#000"></div>
+  <button id="fade-btn">淡出</button>
+<!--  <script type="text/javascript">
+    var obj = document.getElementById("fade-obj");
+    var btn = document.getElementById("fade-btn");
+    var timer = null;  //clearInterval()需要定时器ID
+    btn.addEventListener("click",process,false);
+    function process(){
+      if(btn.innerHTML == "淡出"){
+        btn.setAttribute("disabled",true);
+        timer = setInterval(fout,100);
+      }
+      else {
+        btn.setAttribute("disabled",true);
+        timer = setInterval(fin,100);
+      }
+    }
+
+    function fout() {
+      var opacity = Number(obj.style.opacity);
+      if(opacity > 0){
+        opacity -= 0.05;
+        obj.style.opacity = opacity;
+      }
+      else {
+        btn.innerHTML = "淡入";
+        btn.removeAttribute("disabled");
+        clearInterval(timer);
+      }
+    }
+
+    function fin() {
+      var opacity = Number(obj.style.opacity);
+      if(opacity < 1){
+        opacity += 0.05;
+        obj.style.opacity = opacity;
+      }
+      else{
+        btn.innerHTML = "淡出";
+        btn.removeAttribute("disabled");
+        clearInterval(timer);
+      }
+    }
+  </script>
+-->
+  <script type="text/javascript">
+  var obj = document.getElementById("fade-obj");
+  var btn = document.getElementById("fade-btn");
+  btn.addEventListener("click",process,false);
+  function process(){
+    if(btn.innerHTML == "淡出"){
+      btn.setAttribute("disabled",true);
+      timer = setTimeout(fout,100);
+    }
+    else {
+      btn.setAttribute("disabled",true);
+      timer = setTimeout(fin,100);
+    }
+  }
+
+  function fout() {
+    var opacity = Number(obj.style.opacity);
+    if(opacity > 0){
+      opacity -= 0.05;
+      obj.style.opacity = opacity;
+      setTimeout(fout,100);
+    }
+    else {
+      btn.innerHTML = "淡入";
+      btn.removeAttribute("disabled");
+    }
+  }
+
+  function fin() {
+    var opacity = Number(obj.style.opacity);
+    if(opacity < 1){
+      opacity += 0.05;
+      obj.style.opacity = opacity;
+      setTimeout(fin,100);
+    }
+    else{
+      btn.innerHTML = "淡出";
+      btn.removeAttribute("disabled");
+    }
+  }
+  </script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>7-18-ex5</title>
+  <style>
+    .container {
+      height: 480px;
+      width: 480px;
+      margin: auto;
+      background: url("erik.jpg") no-repeat 0px 0px;
+    }
+    #stop {
+      margin: 10px auto;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <div class="container"></div>
+  <button type="button" name="button" id="stop">Stop</button>
+  <script type="text/javascript">
+    var container = document.getElementsByClassName("container")[0];
+    var btn = document.getElementById("stop");
+    var timer = null;
+    var change = true; //for replay
+    btn.addEventListener("click",stop,false);
+    function stop() {
+      clearTimeout(timer);
+    }
+    timer = setTimeout(smile,100);
+    function smile() {
+      var pos = getComputedStyle(container,null).getPropertyValue("background-position");
+      var posT = parseInt(pos.split(" ")[1]);//two axis:x-axis , y-axis;We could also use xxx.style.backgroundPositionY
+      if(change) {
+        posT -= 480;
+        container.style.cssText = "background-position:" + 0 + "px" + " " + posT + "px";
+        timer = setTimeout(smile,100);
+      }
+      else {
+        posT += 480;
+        container.style.cssText = "background-position:" + 0 + "px" + " " + posT + "px";
+        timer = setTimeout(smile,100);
+      }
+      if(posT == -7680 || posT == 0){
+        change = !change;
+      }
+    }
+  </script>
+</body>
+</html>
