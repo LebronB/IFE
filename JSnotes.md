@@ -18,3 +18,5 @@ Array并非只读，利用length属性可以添加新项，对于中间未定义
 检测数组：Array.isArray()方法
 
 转换方法：Array.toString() Array.valueOf()
+
+栈方法：
